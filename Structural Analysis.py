@@ -147,119 +147,198 @@ while(choice == 'y'):
                 print('not ready')
 
 
+        # If the type of loading condition selected is moment load then the following else statement will be executed
         else:
-            M = input('M : ')
-            l = input('length of beam : ')
-            E = input('modulus of elasticity : ')
-            I = input('moment of inertia : ')
-            print()
-            print('selecting the method to be used')
-            print('1) Strain Energy Method')
+            print("You have selected Moment Load as the loading condition.")
+            
+            # User is asked to enter values for moment load, length of beam, modulus of elasticity and moment of inertia
+            M = input("\nEnter moment load (M) in N-mm : ")
+            L = input("Enter length of beam (L) in mm : ")
+            E = input("Enter modulus of elasticity (E) of the material of beam in N/mm^2 : ")
+            I = input("Enter moment of inertia (I) of the beam in mm^4  : ")
+            
+             # Menu for various structural analysis methods starts here
+            print("\nThe various methods of analysis available are : ")
+            print("1:-> Strain Energy Method")
             print('method2')
             print('method3')
-            print()
-            method = input('mehthod to be used (1/2/3) : ')
-            if method == '1':
-                print('STEP 01 : CALCULATING STRAIN ENERGY (u)')
-                u = (int(M)*int(M)*int(l))/(2*int(E)*int(I))
-                print("strain energy,u = " + str(u))
-                print("STEP 02 : FINDING DEFLECTION AT POINT 'B'")
-                deflection = (int(M)*int(l))/(int(E)*int(I))
-                print('deflection' + str(deflection))
 
-            elif method == '2':
+            # User is asked to select the method of structural analysis
+            analysis_cantilever = input("\nPlease select the method of analysis (1, 2 or 3) : ")
+
+
+            if analysis_cantilever == '1':
+                print("You have selected Strain Energy Method.")
+
+                print("\nSTEP 01 : CALCULATING STRAIN ENERGY (u)")
+                u = (float(M)*float(M)*float(L))/(2*float(E)*float(I))
+                print("Strain energy in this case, represented by u, is given as = " + str(u) + " N-mm")
+
+                print("STEP 02 : FINDING DEFLECTION AT POINT 'B'")
+                deflection = (float(M)*float(L))/(float(E)*float(I))
+                print("Deflection at point 'B' is given as  = " + str(deflection) + " mm ")
+
+                # User is asked whether he or she wishes to continue the analysis or not
+                choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
+
+            elif analysis_cantilever == '2':
                 print("not ready")
 
             else:
                 print('not ready')
 
+    # If the type of beam selected is propped cantilever beam then the following if statement will be executed
     elif type_of_beam == '2':
         print('not ready')
 
+    # If the type of beam selected is simply supported beam then the following if statement will be executed
     elif type_of_beam == '3':
-        print('specify the loading conditions')
-        print('1) Point load :      |P     ')
-        print('                     V')
-        print('              A-------------C')
-        print('              ^      B      O')
-        print('\n \n')
-        print('2) UDL       :       W      ')
-        print('             /\\/\\/\\/\\/\\/\\/\\/\\')
-        print('             A--------------C')
-        print('              ^      B      O')
-        print('\n \n')
-        print('3) Moment    :               \\')
-        print('             A---------------/C')
-        print('              ^       B     VO')
-        load = input('load type (1/2/3) : ')
-        if load == '1':
-            p = input('P : ')
-            l = input('length of beam : ')
-            E = input('modulus of elasticity : ')
-            I = input('moment of inertia : ')
-            print()
-            print('selecting the method to be used')
-            print('1) Strain Energy Method')
+        print("You have selected Simply Supported Beam.")
+
+        # Loading conditions menu starts here
+        print("\nThe various types of loading conditions available for Simply Supported beam are : ")
+
+        # Point Load for Simply Supported beam
+        print("\n1:-> Point Load :- ")
+        print("                  |P")
+        print("                  |")
+        print("                  V")
+        print("        ----------------------")
+        print("        ^         B          O")
+        print("        A                    C")
+        print("\n")
+
+        # Uniformly Distributed Load for Simply Supported beam
+        print("2:-> Uniformly Distrbuted Load :- ")
+        print("                  |W")
+        print("                  |")
+        print("                  V")
+        print("        /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\")
+        print("        ----------------------")
+        print("        ^                    O")
+        print("        A                    B")
+        print("\n")
+
+
+        # Moment Load for Simply Supported Beam
+        print("3:-> Moment Load :- ")
+        print("                             \\M")
+        print("       ---------------------- \\")
+        print("       ^                    O /")
+        print("       A                    B/")
+        print("                            L")
+        print("\n")
+
+
+        # User is asked to select the type of loading condition her or she wishes to apply to the beam
+        load_simplysupported = input("Please specify the loading condition (1, 2 or 3) : ")
+
+        # If the type of loading condition selected is point load then the following if statement will be executed 
+        if load_simplysupported == '1':
+            print("You have selected Point Load as the loading condition.")
+
+            # User is asked to enter values for load, length of beam, modulus of elasticity and moment of inertia
+            P = input("\nEnter load magnitude (P) in N : ")
+            L = input("Enter length of beam (L) in mm : ")
+            E = input("Enter modulus of elasticity (E) of the material of beam in N/mm^2 : ")
+            I = input("Enter moment of inertia (I) of beam in mm^4 : ")
+            
+            # Menu for various structural analysis methods starts here
+            print("\nThe various methods of analysis available are : ")
+            print("1:-> Strain Energy Method")
             print('method2')
             print('method3')
-            print()
-            method = input('mehthod to be used (1/2/3) : ')
-            if method == '1':
-                print('STEP 01 : CALCULATING STRAIN ENERGY (u)')
-                u = (int(p)*int(p)*int(l)*int(l)*int(l))/(96*int(E)*int(I))
-                print("strain energy,u = " + str(u))
-                print("STEP 02 : FINDING DEFLECTION AT POINT 'B'")
-                deflection = (int(p)*int(l)*int(l)*int(l))/(48*int(E)*int(I))
-                print('deflection' + str(deflection))
+            
+            # User is asked to select the method of structural analysis
+            analysis_simplysupported = input("\nPlease select the method of analysis (1, 2 or 3) : ")
+            
+            # If the method of analysis selected is Strain Energy Method then the following if statement will be executed
+            if analysis_simplysupported == '1':
+                print("You have selected Strain Energy Method.")
 
-            elif method == '2':
+                print("\nSTEP 01 : CALCULATING STRAIN ENERGY (u)")
+                u = (float(P)*float(P)*float(L)*float(L)*float(L))/(96*float(E)*float(I))
+                print("Strain energy in this case, represented by u, is given as = " + str(u) + " N-mm")
+
+                print("STEP 02 : FINDING DEFLECTION AT POINT 'B'")
+                deflection = (float(P)*float(L)*float(L)*float(L))/(48*float(E)*float(I))
+                print("Deflection at point 'B' is given as  = " + str(deflection) + " mm ")
+
+                # User is asked whether he or she wishes to continue the analysis or not
+                choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
+
+            elif analysis_simplysupported == '2':
                 print("not ready")
 
             else:
                 print('not ready')
 
-        elif load == '2':
-            w = input('W : ')
-            l = input('length of beam : ')
-            E = input('modulus of elasticity : ')
-            I = input('moment of inertia : ')
-            print()
-            print('selecting the method to be used')
-            print('1) Strain Energy Method')
+        # If the type of loading condition selected is uniformly distributed load then the following elif statement will be executed
+        elif load_simplysupported == '2':
+            print("You have selected Uniformly Distributed Load as the loading condition.")
+            
+            # User is asked to enter values for uniformly distributed load, length of beam, modulus of elasticity and moment of inertia
+            W = input("\nEnter uniformly distributed load (w) in N/mm : ")
+            L = input("Enter length of beam (L) in mm : ")
+            E = input("Enter modulus of elasticity (E) of the material of beam in N/mm^2 : ")
+            I = input("Enter moment of inertia (I) of beam in mm^4 : ")
+
+            # Menu for various structural analysis methods starts here
+            print("\nThe various methods of analysis available are : ")
+            print("1:-> Strain Energy Method")
             print('method2')
             print('method3')
-            print()
-            method = input('method to be used (1/2/3) : ')
-            if method == '1':
-                print('STEP 01 : CALCULATING STRAIN ENERGY (u)')
-                u = (int(w)*int(w)*int(l)*int(l)*int(l)*int(l)*int(l))/(96*int(E)*int(I))
-                print("strain energy,u = " + str(u))
-                print("STEP 02 : FINDING DEFLECTION AT POINT 'B'")
-                deflection = (int(w)*int(l)*int(l)*int(l)*int(l))/(48*int(E)*int(I))
-                print('deflection' + str(deflection))
 
-            elif method == '2':
+            # User is asked to select the method of structural analysis
+            analysis_simplysupported = input("\nPlease select the method of analysis (1, 2 or 3) : ")
+
+            # If the method of analysis selected is Strain Energy Method then the following if statement will be executed
+            if analysis_simplysupported == '1':
+                print("You have selected Strain Energy Method.")
+
+                print("\nSTEP 01 : CALCULATING STRAIN ENERGY (u)")
+                u = (float(W)*float(W)*float(L)*float(L)*float(L)*float(L)*float(L))/(96*float(E)*float(I))
+                print("Strain energy in this case, represented by u, is given as = " + str(u) + " N-mm")
+
+                print("STEP 02 : FINDING DEFLECTION AT POINT 'B'")
+                deflection = (float(W)*float(L)*float(L)*float(L)*float(L))/(48*float(E)*float(I))
+                print("Deflection at point 'B' is given as  = " + str(deflection) + " mm ")
+
+                # User is asked whether he or she wishes to continue the analysis or not
+                choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
+
+            elif analysis_simplysupported == '2':
                 print("not ready")
 
             else:
                 print('not ready')
 
+        # If the type of loading condition selected is moment load then the following else statement will be executed
         else:
-            w = input('W : ')
-            l = input('length of beam : ')
-            E = input('modulus of elasticity : ')
-            I = input('moment of inertia : ')
-            print()
-            print('selecting the method to be used')
-            print('1) Strain Energy Method')
+            print("You have selected Moment Load as the loading condition.")
+            
+            # User is asked to enter values for moment load, length of beam, modulus of elasticity and moment of inertia
+            M = input("\nEnter moment load (M) in N-mm : ")
+            L = input("Enter length of beam (L) in mm : ")
+            E = input("Enter modulus of elasticity (E) of the material of beam in N/mm^2 : ")
+            I = input("Enter moment of inertia (I) of the beam in mm^4  : ")
+            
+             # Menu for various structural analysis methods starts here
+            print("\nThe various methods of analysis available are : ")
+            print("1:-> Strain Energy Method")
             print('method2')
             print('method3')
-            print()
-            method = input('method to be used (1/2/3) : ')
-            if method == '1':
-                print('ERROR : This method does not work for the given conditions')
+
+            # User is asked to select the method of structural analysis
+            analysis_simplysupported = input("\nPlease select the method of analysis (1, 2 or 3) : ")
+
+            # If the method of analysis selected is Strain Energy Method then the following if statement will be executed
+            if analysis_simplysupported == '1':
+                print("You have selected Strain Energy Method.")
+
+                print("\nERROR : This method does not work for the given loading condition.")
                 
-            elif method == '2':
+            elif analysis_simplysupported == '2':
                 print("not ready")
 
             else:
@@ -270,6 +349,7 @@ while(choice == 'y'):
     else:
         print('not ready')
 
+# If the user doesn't wish to continue with the program for beam analysis then the following else statement will be executed
 else:
     print(exit)
     exit()

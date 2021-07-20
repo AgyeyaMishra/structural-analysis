@@ -240,7 +240,7 @@ while(choice == 'y'):
             print("\nThe various methods of analysis available are : ")
             print("1:-> Strain Energy Method")
             print("2:-> Minimum Potential Energy Theorem Method")
-            print('method3')
+            print("3:-> Consistent Deformation Theorem Method")
             
             # User is asked to select the method of structural analysis
             analysis_proppedcantilever = input("\nPlease select the method of analysis (1, 2 or 3) : ")
@@ -254,7 +254,7 @@ while(choice == 'y'):
                 # User is asked whether he or she wishes to continue the analysis or not
                 choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
             
-            # If the method of analysis selected is Minimum Energy Theorem Method then the following if statement will be executed
+            # If the method of analysis selected is Minimum Energy Theorem Method then the following elif statement will be executed
             elif analysis_proppedcantilever == '2':
                 print("You have selected Minimum Potentital Energy Theorem Method.")
 
@@ -267,8 +267,47 @@ while(choice == 'y'):
                 # User is asked whether he or she wishes to continue the analysis or not
                 choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
 
-            else:
-                print('not ready')
+            # If the method of analysis selected is Consistent Deformation Theorem Method then the following elif statement will be executed     
+            elif analysis_proppedcantilever == '3':
+                print("You have selected Consistent Deformation Theorem Method.")
+
+                print("\nSTEP 01: CALCULATING DEGREE OF STATIC INDETERMINACY (Ds) ")
+                print("Number of actual reactions, R = 3")
+                print("Number oe equations available, E = 2")
+                print("Degree of Static Indeterminacy, Ds = R - E = 1")
+
+                print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
+                print("Let 'Rb' be the redundant reaction at B.")
+                deltaA1 = (float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
+                deltaB1 = -(float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
+                print("Deflection at A due to loading, Delta(A1) = " + str(deltaA1))
+                print("Deflection at B due to loading, Delta(A2) = " + str(deltaB1))
+
+                print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
+                print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
+                Ma = (float(W)*float(L)*float(L))/12
+                deltaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
+                deltaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
+                print("Deflection at A due to redundant reaction at A, Delta(A2) = " + str(deltaA2))
+                print("Deflection at B due to redundant reaction at A, Delta(B2) = " + str(deltaB2))
+                Mb = (float(W)*float(L)*float(L))/8
+                deltaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
+                deltaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
+                print("Deflection at A due to redundant reaction at B, Delta(A3) = " + str(deltaA3))
+                print("Deflection at B due to redundant reaction at B, Delta(B3) = " + str(deltaB3))
+
+                print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
+                print("Approach:- To solve for redundant reactions, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at the fixed supports A and B is zero.")
+                print("Therefore, deflection at A, Delta(A) = Delta(A1) + Delta(A2) + Delta (A3) = 0")
+                print("Also, delfection at B, Delta(B) = Delta(B1) + Delta(B2) + Delta(B3) = 0")
+                print("Solving the above two equations, we get redundant reaction at A, Ma = WL^2/12 = " + str(Ma) + " N")
+                print("Redundant reaction at B, Mb = WL^2/12 = " + str(Mb) + " N")
+
+                # User is asked whether he or she wishes to continue the analysis or not
+                choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
+
+
+
 
         # If the type of loading condition selected is uniformly distributed load then the following elif statement will be executed
         elif load_proppedcantilever == '2':
@@ -309,8 +348,37 @@ while(choice == 'y'):
                 # User is asked whether he or she wishes to continue the analysis or not
                 choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
 
-            else:
-                print('not ready')
+            # If the method of analysis selected is Consistent Deformation Theorem Method then the following elif statement will be executed
+            elif analysis_propepdcantilever == '3':
+                print("You have selected Consistent Deformation Theorem Method.")
+
+                print("\nSTEP 01: CALCULATING DEGREE OF STATIC INDETERMINACY (Ds) ")
+                print("Number of actual reactions, R = 3")
+                print("Number oe equations available, E = 2")
+                print("Degree of Static Indeterminacy, Ds = R - E = 1")
+
+                print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
+                print("Let 'Rb' be the redundant reaction at B.")
+                deltaB1 = -(float(W)*float(L)*float(L)*float(L)*float(L))/(8*float(E)*float(I))
+                print("Deflection at B due to applied loading, Delta(B1) = " + str(deltaB1))
+
+                print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
+                Rb = (3*float(W)*float(L))/8
+                deltaB2 = (float(Rb)*float(L)*float(L)*float(L))/(3*float(E)*float(I))
+                print("Deflection at B due to redundant reaction at B, Delta(B2) = " + str(deltaB2))
+                
+                print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
+                print("Approach:- To solve for redundant reaction, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at B is zero.")
+                print("Delfection at B, Delta(B) = Delta(B1) + Delta(B2) = 0")
+                print("Substituting the values and solving the above equation, we get redundant reaction at B, Ma = 3WL/8 = " + str(Rb) + " N")
+                Ra = (5*float(W)*float(L))/8
+                Ma = -(float(W)*float(L)*float(L))/8
+                print("Using the value of redundant reaction at B 'Rb', we can also calculate the following:")
+                print("Reaction at A, 'Ra' = WL - Rb = 5WL/8 = " + str(Ra) + " N")
+                print("Bending Moment at A, 'Ma' = Rb - WL^2/2 = " + str(Ma) + " Nm (Taking clockwise direction as negative)")
+
+                # User is asked whether he or she wishes to continue the analysis or not
+                choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
 
         # If the type of loading condition selected is moment load then the following else statement will be executed
         else:
@@ -544,10 +612,10 @@ while(choice == 'y'):
                 print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
                 deltaA1 = (float(P)*float(L)*float(L))/(16*float(E)*float(I))
                 deltaB1 = -(float(P)*float(L)*float(L))/(16*float(E)*float(I))
-                print("Deflection at A due to loading, Delta(A1) = " + str(deltaA1))
-                print("Deflection at B due to loading, Delta(A2) = " + str(deltaB1))
+                print("Deflection at A due to applied loading, Delta(A1) = " + str(deltaA1))
+                print("Deflection at B due to applied loading, Delta(B1) = " + str(deltaB1))
 
-                print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTIONA DUE TO REDUNDANT REACTIONS")
+                print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
                 print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
                 Ma = (float(P)*float(L))/8
                 deltaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
@@ -603,6 +671,7 @@ while(choice == 'y'):
                 # User is asked whether he or she wishes to continue the analysis or not
                 choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
 
+            # If the method of analysis selected is Consistent Deformation Theorem Method then the following elif statement will be executed
             elif analysis_fixed == '2':
                 print("You have selected Consistent Deformation Theorem Method.")
 
@@ -615,10 +684,10 @@ while(choice == 'y'):
                 print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
                 deltaA1 = (float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
                 deltaB1 = -(float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
-                print("Deflection at A due to loading, Delta(A1) = " + str(deltaA1))
-                print("Deflection at B due to loading, Delta(A2) = " + str(deltaB1))
+                print("Deflection at A due to applied loading, Delta(A1) = " + str(deltaA1))
+                print("Deflection at B due to applied loading, Delta(B1) = " + str(deltaB1))
 
-                print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTIONA DUE TO REDUNDANT REACTIONS")
+                print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
                 print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
                 Ma = (float(W)*float(L)*float(L))/12
                 deltaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))

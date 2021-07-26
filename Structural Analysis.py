@@ -278,35 +278,26 @@ while(choice == 'y'):
 
                 print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
                 print("Let 'Rb' be the redundant reaction at B.")
-                deltaA1 = (float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
-                deltaB1 = -(float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
-                print("Deflection at A due to loading, Delta(A1) = " + str(deltaA1))
-                print("Deflection at B due to loading, Delta(A2) = " + str(deltaB1))
+                deltaB1 = -(5*float(P)*float(L)*float(L)*float(L))/(48*float(E)*float(I))
+                print("Deflection at B due to applied loading, Delta(B1) = " + str(deltaB1))
 
                 print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
-                print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
-                Ma = (float(W)*float(L)*float(L))/12
-                deltaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
-                deltaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
-                print("Deflection at A due to redundant reaction at A, Delta(A2) = " + str(deltaA2))
-                print("Deflection at B due to redundant reaction at A, Delta(B2) = " + str(deltaB2))
-                Mb = (float(W)*float(L)*float(L))/8
-                deltaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
-                deltaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
-                print("Deflection at A due to redundant reaction at B, Delta(A3) = " + str(deltaA3))
-                print("Deflection at B due to redundant reaction at B, Delta(B3) = " + str(deltaB3))
-
+                Rb = (5*float(P)/16
+                deltaB2 = (float(Rb)*float(L)*float(L)*float(L))/(3*float(E)*float(I))
+                print("Deflection at B due to redundant reaction at B, Delta(B2) = " + str(deltaB2))
+                
                 print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
-                print("Approach:- To solve for redundant reactions, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at the fixed supports A and B is zero.")
-                print("Therefore, deflection at A, Delta(A) = Delta(A1) + Delta(A2) + Delta (A3) = 0")
-                print("Also, delfection at B, Delta(B) = Delta(B1) + Delta(B2) + Delta(B3) = 0")
-                print("Solving the above two equations, we get redundant reaction at A, Ma = WL^2/12 = " + str(Ma) + " N")
-                print("Redundant reaction at B, Mb = WL^2/12 = " + str(Mb) + " N")
+                print("Approach:- To solve for redundant reaction, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at B is zero.")
+                print("Delfection at B, Delta(B) = Delta(B1) + Delta(B2) = 0")
+                print("Substituting the values and solving the above equation, we get redundant reaction at B, Rb = 5P/16" + str(Rb) + " N")
+                Ra = (11*float(P))/16
+                Ma = -(3*float(P)*float(L)*float(L))/16
+                print("Using the value of redundant reaction at B 'Rb', we can also calculate the following:")
+                print("Reaction at A, 'Ra' = WL - Rb = 5WL/8 = " + str(Ra) + " N")
+                print("Bending Moment at A, 'Ma' = Rb - WL^2/2 = " + str(Ma) + " Nm (Taking clockwise direction as negative)")
 
                 # User is asked whether he or she wishes to continue the analysis or not
                 choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
-
-
 
 
         # If the type of loading condition selected is uniformly distributed load then the following elif statement will be executed
@@ -370,7 +361,7 @@ while(choice == 'y'):
                 print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
                 print("Approach:- To solve for redundant reaction, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at B is zero.")
                 print("Delfection at B, Delta(B) = Delta(B1) + Delta(B2) = 0")
-                print("Substituting the values and solving the above equation, we get redundant reaction at B, Ma = 3WL/8 = " + str(Rb) + " N")
+                print("Substituting the values and solving the above equation, we get redundant reaction at B, Rb = 3WL/8 = " + str(Rb) + " N")
                 Ra = (5*float(W)*float(L))/8
                 Ma = -(float(W)*float(L)*float(L))/8
                 print("Using the value of redundant reaction at B 'Rb', we can also calculate the following:")

@@ -273,7 +273,7 @@ while(choice == 'y'):
 
                 print("\nSTEP 01: CALCULATING DEGREE OF STATIC INDETERMINACY (Ds) ")
                 print("Number of actual reactions, R = 3")
-                print("Number oe equations available, E = 2")
+                print("Number of equations available, E = 2")
                 print("Degree of Static Indeterminacy, Ds = R - E = 1")
 
                 print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
@@ -282,7 +282,7 @@ while(choice == 'y'):
                 print("Deflection at B due to applied loading, Delta(B1) = " + str(deltaB1))
 
                 print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
-                Rb = (5*float(P)/16
+                Rb = (5*float(P)/16)
                 deltaB2 = (float(Rb)*float(L)*float(L)*float(L))/(3*float(E)*float(I))
                 print("Deflection at B due to redundant reaction at B, Delta(B2) = " + str(deltaB2))
                 
@@ -345,7 +345,7 @@ while(choice == 'y'):
 
                 print("\nSTEP 01: CALCULATING DEGREE OF STATIC INDETERMINACY (Ds) ")
                 print("Number of actual reactions, R = 3")
-                print("Number oe equations available, E = 2")
+                print("Number of equations available, E = 2")
                 print("Degree of Static Indeterminacy, Ds = R - E = 1")
 
                 print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
@@ -596,7 +596,7 @@ while(choice == 'y'):
 
                 print("\nSTEP 01: CALCULATING DEGREE OF STATIC INDETERMINACY (Ds) ")
                 print("Number of actual reactions, R = 4")
-                print("Number oe equations available, E = 2")
+                print("Number of equations available, E = 2")
                 print("Degree of Static Indeterminacy, Ds = R - E = 2")
 
                 print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
@@ -685,7 +685,7 @@ while(choice == 'y'):
                 deltaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
                 print("Deflection at A due to redundant reaction at A, Delta(A2) = " + str(deltaA2))
                 print("Deflection at B due to redundant reaction at A, Delta(B2) = " + str(deltaB2))
-                Mb = (float(W)*float(L)*float(L))/8
+                Mb = (float(W)*float(L)*float(L))/12
                 deltaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
                 deltaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
                 print("Deflection at A due to redundant reaction at B, Delta(A3) = " + str(deltaA3))

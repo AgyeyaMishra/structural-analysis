@@ -5,7 +5,7 @@ while (i < 148):
     i = i + 1
 
 # Printing the initial instructions for our structural analysis program
-print("\n \t Set of instructions I:- \n \t 1:-> Create a structural problem from the root to analyse by selecting the beam, the number and the type of supports, and the types of load. \n \n \t Set of instructions II:- \n \t 1:-> Select the type of beam to analyse. \n \t 2:-> Select the method of analysis (Force method or Displacement method). \n \t 3:-> Specify the loading condition. \n \t 4:-> Select the preferred method of analysis. \n \t 5:-> Enter the corresponding values.\n")
+print("\n \t Set of instructions I:- \n \t 1:-> Create a structural problem from the very basic to analyse by selecting the beam, the number and the type of supports, and the types of load. \n \n \t Set of instructions II:- \n \t 1:-> Select the type of beam to analyse. \n \t 2:-> Select the method of analysis (Force method or Displacement method). \n \t 3:-> Specify the loading condition. \n \t 4:-> Select the preferred method of analysis. \n \t 5:-> Enter the corresponding values.\n")
 
 j = 0
 while (j < 148):
@@ -265,19 +265,19 @@ while(choice == 'y'):
                         print("Number of equations available, E = 2")
                         print("Degree of Static Indeterminacy, Ds = R - E = 1")
 
-                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
+                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DISPLACEMENT DUE TO LOADING")
                         print("Let 'Rb' be the redundant reaction at B.")
                         deltaB1 = -(5*float(P)*float(L)*float(L)*float(L))/(48*float(E)*float(I))
-                        print("Deflection at B due to applied loading, Delta(B1) = -(5*P*L^3)/(48*E*I) = " + str(deltaB1))
+                        print("Displacement at B due to applied loading, Delta(B1) = -(5*P*L^3)/(48*E*I) = " + str(deltaB1*0.001) + " m")
 
-                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
+                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DISPLACEMENT DUE TO REDUNDANT REACTIONS")
                         Rb = (5*float(P)/16)
                         deltaB2 = (float(Rb)*float(L)*float(L)*float(L))/(3*float(E)*float(I))
-                        print("Deflection at B due to redundant reaction at B, Delta(B2) = (Rb*L^3)/(3*E*I) = " + str(deltaB2))
+                        print("Displacement at B due to redundant reaction at B, Delta(B2) = (Rb*L^3)/(3*E*I) = " + str(deltaB2*0.001) + " m")
                         
                         print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
                         print("Approach:- To solve for redundant reaction, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at B is zero.")
-                        print("Deflection at B, Delta(B) = Delta(B1) + Delta(B2) = 0")
+                        print("Total Displacement at B, Delta(B) = Delta(B1) + Delta(B2) = 0")
                         print("Substituting the values and solving the above equation, we get redundant reaction at B, Rb = (5*P)/16 = " + str(Rb) + " N")
                         Ra = (11*float(P))/16
                         Ma = -(3*float(P)*float(L)*float(L))/16
@@ -327,19 +327,19 @@ while(choice == 'y'):
                         print("Number of equations available, E = 2")
                         print("Degree of Static Indeterminacy, Ds = R - E = 1")
 
-                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
+                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DISPLACEMENT DUE TO LOADING")
                         print("Let 'Rb' be the redundant reaction at B.")
                         deltaB1 = -(float(W)*float(L)*float(L)*float(L)*float(L))/(8*float(E)*float(I))
-                        print("Deflection at B due to applied loading, Delta(B1) = -(W*L^4)/(8*E*I) = " + str(deltaB1))
+                        print("Displacement at B due to applied loading, Delta(B1) = -(W*L^4)/(8*E*I) = " + str(deltaB1*0.001) + " m")
 
-                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
+                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DISPLACEMENT DUE TO REDUNDANT REACTIONS")
                         Rb = (3*float(W)*float(L))/8
                         deltaB2 = (float(Rb)*float(L)*float(L)*float(L))/(3*float(E)*float(I))
-                        print("Deflection at B due to redundant reaction at B, Delta(B2) = (Rb*L^3)/(3*E*I) = " + str(deltaB2))
+                        print("Displacement at B due to redundant reaction at B, Delta(B2) = (Rb*L^3)/(3*E*I) = " + str(deltaB2*0.001) + " m")
                         
                         print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
                         print("Approach:- To solve for redundant reaction, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at B is zero.")
-                        print("Deflection at B, Delta(B) = Delta(B1) + Delta(B2) = 0")
+                        print("Total displacement at B, Delta(B) = Delta(B1) + Delta(B2) = 0")
                         print("Substituting the values and solving the above equation, we get redundant reaction at B, Rb = (3*W*L)/8 = " + str(Rb) + " N")
                         Ra = (5*float(W)*float(L))/8
                         Ma = -(float(W)*float(L)*float(L))/8
@@ -352,7 +352,9 @@ while(choice == 'y'):
 
                 # If the type of loading condition selected is moment load then the following else statement will be executed
                 else:
-                    print('not ready')
+                    print("ERROR! Not ready.")
+
+
 
             # If the type of beam selected is simply supported beam then the following if statement will be executed
             elif type_of_beam == '3':
@@ -543,30 +545,30 @@ while(choice == 'y'):
                         print("Number of equations available, E = 2")
                         print("Degree of Static Indeterminacy, Ds = R - E = 2")
 
-                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
+                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DISPLACEMENTS DUE TO LOADING")
                         print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
-                        deltaA1 = (float(P)*float(L)*float(L))/(16*float(E)*float(I))
-                        deltaB1 = -(float(P)*float(L)*float(L))/(16*float(E)*float(I))
-                        print("Deflection at A due to applied loading, Delta(A1) = (P*L^2)/(16*E*I) = " + str(deltaA1))
-                        print("Deflection at B due to applied loading, Delta(B1) = -(P*L^2)/(16*E*I) = " + str(deltaB1))
+                        thetaA1 = (float(P)*float(L)*float(L))/(16*float(E)*float(I))
+                        thetaB1 = -(float(P)*float(L)*float(L))/(16*float(E)*float(I))
+                        print("Displacement at A due to applied loading, Theta(A1) = (P*L^2)/(16*E*I) = " + str(thetaA1))
+                        print("Displacement at B due to applied loading, Theta(B1) = -(P*L^2)/(16*E*I) = " + str(thetaB1))
 
-                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
+                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DISPLACEMENTS DUE TO REDUNDANT REACTIONS")
                         print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
                         Ma = (float(P)*float(L))/8
-                        deltaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
-                        deltaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
-                        print("Deflection at A due to redundant reaction at A, Delta(A2) = -(Ma*L)/(3*E*I) = " + str(deltaA2))
-                        print("Deflection at B due to redundant reaction at A, Delta(B2) = (Ma*L)/(6*E*I) = " + str(deltaB2))
+                        thetaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
+                        thetaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
+                        print("Displacement at A due to redundant reaction at A, Theta(A2) = -(Ma*L)/(3*E*I) = " + str(thetaA2))
+                        print("Displacement at B due to redundant reaction at A, Theta(B2) = (Ma*L)/(6*E*I) = " + str(thetaB2))
                         Mb = (float(P)*float(L))/8
-                        deltaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
-                        deltaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
-                        print("Deflection at A due to redundant reaction at B, Delta(A3) = -(Mb*L)/(6*E*I) = " + str(deltaA3))
-                        print("Deflection at B due to redundant reaction at B, Delta(B3) = (Mb*L)/(3*E*I) = " + str(deltaB3))
+                        thetaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
+                        thetaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
+                        print("Displacement at A due to redundant reaction at B, Theta(A3) = -(Mb*L)/(6*E*I) = " + str(thetaA3))
+                        print("Displacement at B due to redundant reaction at B, Theta(B3) = (Mb*L)/(3*E*I) = " + str(thetaB3))
 
                         print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
                         print("Approach:- To solve for redundant reactions, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at the fixed supports A and B is zero.")
-                        print("Therefore, deflection at A, Delta(A) = Delta(A1) + Delta(A2) + Delta (A3) = 0")
-                        print("Also, deflection at B, Delta(B) = Delta(B1) + Delta(B2) + Delta(B3) = 0")
+                        print("Therefore, total displacement at A, Delta(A) = Delta(A1) + Delta(A2) + Delta (A3) = 0")
+                        print("Also, total displacement at B, Delta(B) = Delta(B1) + Delta(B2) + Delta(B3) = 0")
                         print("Solving the above two equations, we get redundant reaction at A, Ma = (P*L)/8 = " + str(Ma) + " N")
                         print("Redundant reaction at B, Mb = (P*L)/8 = " + str(Mb) + " N")
 
@@ -600,30 +602,30 @@ while(choice == 'y'):
                         print("Number oe equations available, E = 2")
                         print("Degree of Static Indeterminacy, Ds = R - E = 2")
 
-                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DEFLECTIONS DUE TO LOADING")
+                        print("\nSTEP 02: REMOVING REDUNDANT REACTIONS AND CALCULATING DISPLACEMENTS DUE TO LOADING")
                         print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
-                        deltaA1 = (float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
-                        deltaB1 = -(float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
-                        print("Deflection at A due to applied loading, Delta(A1) = (W*L^3)/(24*E*I) = " + str(deltaA1))
-                        print("Deflection at B due to applied loading, Delta(B1) = -(W*L^3)/(24*E*I) = " + str(deltaB1))
+                        thetaA1 = (float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
+                        thetaB1 = -(float(W)*float(L)*float(L)*float(L))/(24*float(E)*float(I))
+                        print("Displacement at A due to applied loading, Slope(A1) = (W*L^3)/(24*E*I) = " + str(thetaA1))
+                        print("Displacement at B due to applied loading, Slope(B1) = -(W*L^3)/(24*E*I) = " + str(thetaB1))
 
-                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DEFLECTION DUE TO REDUNDANT REACTIONS")
+                        print("\nSTEP 03: REMOVING LOADING AND CALCULATING DISPLACEMENT DUE TO REDUNDANT REACTIONS")
                         print("Let 'Ma' be the redundant reaction at A and 'Mb' be the redundant reaction at B.")
                         Ma = (float(W)*float(L)*float(L))/12
-                        deltaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
-                        deltaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
-                        print("Deflection at A due to redundant reaction at A, Delta(A2) = -(Ma*L)/(3*E*I) = " + str(deltaA2))
-                        print("Deflection at B due to redundant reaction at A, Delta(B2) = (Ma*L)/(6*E*I) = " + str(deltaB2))
+                        thetaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
+                        thetaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
+                        print("Displacement at A due to redundant reaction at A, Slope(A2) = -(Ma*L)/(3*E*I) = " + str(thetaA2))
+                        print("Displacement at B due to redundant reaction at A, Slope(B2) = (Ma*L)/(6*E*I) = " + str(deltaB2))
                         Mb = (float(W)*float(L)*float(L))/12
-                        deltaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
-                        deltaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
-                        print("Deflection at A due to redundant reaction at B, Delta(A3) = -(Mb*L)/(6*E*I) = " + str(deltaA3))
-                        print("Deflection at B due to redundant reaction at B, Delta(B3) = (Mb*L)/(3*E*I) = " + str(deltaB3))
+                        thetaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
+                        thetaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
+                        print("Deflection at A due to redundant reaction at B, Slope(A3) = -(Mb*L)/(6*E*I) = " + str(thetaA3))
+                        print("Deflection at B due to redundant reaction at B, Slope(B3) = (Mb*L)/(3*E*I) = " + str(thetaB3))
 
                         print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
                         print("Approach:- To solve for redundant reactions, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at the fixed supports A and B is zero.")
-                        print("Therefore, deflection at A, Delta(A) = Delta(A1) + Delta(A2) + Delta (A3) = 0")
-                        print("Also, delfection at B, Delta(B) = Delta(B1) + Delta(B2) + Delta(B3) = 0")
+                        print("Therefore, total displacement at A, Slope(A) = Slope(A1) + Slope(A2) + Slope(A3) = 0")
+                        print("Also, total displacement at B, Slope(B) = Slope(B1) + Slope(B2) + Slope(B3) = 0")
                         print("Solving the above two equations, we get redundant reaction at A, Ma = (W*L^2)/12 = " + str(Ma) + " N")
                         print("Redundant reaction at B, Mb = (W*L^2)/12 = " + str(Mb) + " N")
 

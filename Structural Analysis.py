@@ -618,7 +618,7 @@ while(choice == 'y'):
                         thetaA2 = -(float(Ma)*float(L))/(3*float(E)*float(I))
                         thetaB2 = (float(Ma)*float(L))/(6*float(E)*float(I))
                         print("Displacement at A due to redundant reaction at A, Slope(A2) = -(Ma*L)/(3*E*I) = " + str(thetaA2))
-                        print("Displacement at B due to redundant reaction at A, Slope(B2) = (Ma*L)/(6*E*I) = " + str(deltaB2))
+                        print("Displacement at B due to redundant reaction at A, Slope(B2) = (Ma*L)/(6*E*I) = " + str(thetaB2))
                         Mb = (float(W)*float(L)*float(L))/12
                         thetaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
                         thetaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))

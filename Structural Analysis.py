@@ -24,7 +24,7 @@ while(choice == 'y'):
     print("2:-> Choose a structural problem.")
 
     # User is asked which type of structural problem analysis he or she wishes to pursue
-    instruction = input("\nPlease select the type of action to be followed (1 or 2) :")
+    instruction = input("\nPlease select the type of action to be followed (1 or 2) : ")
 
     if instruction == '1':
         print("ERROR! Not ready.")
@@ -354,6 +354,9 @@ while(choice == 'y'):
                 else:
                     print("ERROR! Not ready.")
 
+                    # User is asked whether he or she wishes to continue the analysis or not
+                    choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
+
 
 
             # If the type of beam selected is simply supported beam then the following if statement will be executed
@@ -562,13 +565,13 @@ while(choice == 'y'):
                         Mb = (float(P)*float(L))/8
                         thetaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
                         thetaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
-                        print("Displacement at A due to redundant reaction at B, Theta(A3) = -(Mb*L)/(6*E*I) = " + str(thetaA3))
+                        print("\nDisplacement at A due to redundant reaction at B, Theta(A3) = -(Mb*L)/(6*E*I) = " + str(thetaA3))
                         print("Displacement at B due to redundant reaction at B, Theta(B3) = (Mb*L)/(3*E*I) = " + str(thetaB3))
 
                         print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
                         print("Approach:- To solve for redundant reactions, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at the fixed supports A and B is zero.")
-                        print("Therefore, total displacement at A, Delta(A) = Delta(A1) + Delta(A2) + Delta (A3) = 0")
-                        print("Also, total displacement at B, Delta(B) = Delta(B1) + Delta(B2) + Delta(B3) = 0")
+                        print("Therefore, total displacement at A, Theta(A) = Theta(A1) + Theta(A2) + Theta(A3) = 0")
+                        print("Also, total displacement at B, Theta(B) = Theta(B1) + Theta(B2) + Theta(B3) = 0")
                         print("Solving the above two equations, we get redundant reaction at A, Ma = (P*L)/8 = " + str(Ma) + " N")
                         print("Redundant reaction at B, Mb = (P*L)/8 = " + str(Mb) + " N")
 
@@ -619,8 +622,8 @@ while(choice == 'y'):
                         Mb = (float(W)*float(L)*float(L))/12
                         thetaA3 = -(float(Mb)*float(L))/(6*float(E)*float(I))
                         thetaB3 = (float(Mb)*float(L))/(3*float(E)*float(I))
-                        print("Deflection at A due to redundant reaction at B, Slope(A3) = -(Mb*L)/(6*E*I) = " + str(thetaA3))
-                        print("Deflection at B due to redundant reaction at B, Slope(B3) = (Mb*L)/(3*E*I) = " + str(thetaB3))
+                        print("\nDisplacement at A due to redundant reaction at B, Slope(A3) = -(Mb*L)/(6*E*I) = " + str(thetaA3))
+                        print("Displacement at B due to redundant reaction at B, Slope(B3) = (Mb*L)/(3*E*I) = " + str(thetaB3))
 
                         print("\nSTEP 04: OBTAINING COMPATIBILITY EQUATION AND SOLVING FOR 'Ma' and 'Mb'")
                         print("Approach:- To solve for redundant reactions, we need one more equation which can be obtained by compatability. It is quite evident that the deflection at the fixed supports A and B is zero.")
@@ -635,6 +638,11 @@ while(choice == 'y'):
         # If the user selects Displacement method of analysis then the following elif statement will be executed
         elif structural_method_of_analysis == '2':
             print("You have selected Displacement method of analysis.")
+
+            print("\nThis method is currently not ready.")
+
+            # User is asked whether he or she wishes to continue the analysis or not
+            choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
 
 # If the user doesn't wish to continue with the program for beam analysis then the following else statement will be executed
 else:

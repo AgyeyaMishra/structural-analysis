@@ -305,7 +305,7 @@ while(choice == 'y'):
                     print("2:-> Consistent Deformation Theorem Method")
 
                     # User is asked to select the method of structural analysis
-                    analysis_propepdcantilever = input("\nPlease select the method of analysis (1 or 2) : ")
+                    analysis_proppedcantilever = input("\nPlease select the method of analysis (1 or 2) : ")
 
                     # If the method of analysis selected is Minimum Potential Energy Method then the following elif statement will be executed
                     if analysis_proppedcantilever == '1':
@@ -319,7 +319,7 @@ while(choice == 'y'):
                         choice = input("\nPlease enter 'y' if you wish to continue and 'n' to discontinue the anlaysis : ")
 
                     # If the method of analysis selected is Consistent Deformation Theorem Method then the following elif statement will be executed
-                    elif analysis_propepdcantilever == '2':
+                    elif analysis_proppedcantilever == '2':
                         print("You have selected Consistent Deformation Theorem Method.")
 
                         print("\nSTEP 01: CALCULATING DEGREE OF STATIC INDETERMINACY (Ds) ")
